@@ -1,0 +1,13 @@
+.rank-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.rank-text {
+  color: white;
+}
+
+.rank-number {
+  color: white;
+}
