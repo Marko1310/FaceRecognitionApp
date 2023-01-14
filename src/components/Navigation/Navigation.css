@@ -1,0 +1,10 @@
+.signout {
+  font-weight: 400;
+  font-size: large;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}

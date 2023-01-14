@@ -65,4 +65,8 @@
 
 .imageLinkForm-button {
   width: 30%;
+  background-color: rgb(179, 136, 215);
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  border: none;
 }
