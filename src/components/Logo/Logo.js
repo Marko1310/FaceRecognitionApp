@@ -1,18 +1,14 @@
 import React from "react";
 import Tilt from "react-parallax-tilt";
+import "./Logo.css";
+import brain from "./Brain.png";
 
 const Logo = () => {
   return (
-    <div>
-      <Tilt>
-        <div
-          style={{
-            width: "200px",
-            height: "300px",
-            backgroundColor: "darkgreen",
-          }}
-        >
-          <h1>React Parallax Tilt 👀</h1>
+    <div className="tilt-container">
+      <Tilt className="tilt-icon" options={{ tiltEnable: false }}>
+        <div className="tilt-image">
+          <img src={brain} alt="logo" />
         </div>
       </Tilt>
     </div>
