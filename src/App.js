@@ -68,10 +68,10 @@ function App() {
       requestOptions
     )
       .then((response) => response.text())
-      .then(
-        (result) =>
-          console.log(JSON.parse(result)).outputs[0].data.regions[0].region_info
-            .bounding_box
+      .then((result) =>
+        console.log(
+          JSON.parse(result).outputs[0].data.regions[0].region_info.bounding_box
+        )
       )
       .catch((error) => console.log("error", error));
   };
