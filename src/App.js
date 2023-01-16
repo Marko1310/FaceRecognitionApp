@@ -30,8 +30,17 @@ function App() {
     const image = document.getElementById("inputImage");
     const width = image.width;
     const height = image.height;
+    return {
+      leftColumn: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightColumn: width - clarifaiFace.right_col * width,
+      vottomRow: height - clarifaiFace.bottom_row * height,
+    };
+  };
 
-    console.log(height, width);
+  const displayFaceBox = function (box) {
+    setBox({ box });
+    console.log(box);
   };
 
   ////////////// FACE DETECTION API //////////////////
@@ -88,7 +97,7 @@ function App() {
         // console.log(
         //   JSON.parse(result).outputs[0].data.regions[0].region_info.bounding_box
         // )
-        calculateFaceLocation(result)
+        displayFaceBox(calculateFaceLocation(result))
       )
       .catch((error) => console.log("error", error));
   };
