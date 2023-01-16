@@ -14,8 +14,24 @@ function App() {
   // state for image
   const [imageURL, setImageURl] = useState("");
 
+  // state for a box
+  const [box, setBox] = useState("");
+
   const onInputChange = function (event) {
     setInput(event.target.value);
+  };
+
+  const calculateFaceLocation = function (data) {
+    const clarifaiFace =
+      JSON.parse(data).outputs[0].data.regions[0].region_info.bounding_box;
+
+    console.log(clarifaiFace);
+
+    const image = document.getElementById("inputImage");
+    const width = image.width;
+    const height = image.height;
+
+    console.log(height, width);
   };
 
   ////////////// FACE DETECTION API //////////////////
@@ -69,9 +85,10 @@ function App() {
     )
       .then((response) => response.text())
       .then((result) =>
-        console.log(
-          JSON.parse(result).outputs[0].data.regions[0].region_info.bounding_box
-        )
+        // console.log(
+        //   JSON.parse(result).outputs[0].data.regions[0].region_info.bounding_box
+        // )
+        calculateFaceLocation(result)
       )
       .catch((error) => console.log("error", error));
   };
