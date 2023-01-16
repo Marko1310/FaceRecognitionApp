@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Particle from "./components/Particles/Particle";
 import { useState } from "react";
 
@@ -24,12 +25,6 @@ function App() {
   const IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
 
   const onButtonSubmit = function () {
-    console.log("click");
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
-
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
@@ -84,7 +79,7 @@ function App() {
           onInputChange={onInputChange}
         />
       </div>
-      {/* <FaceRecognition /> */}
+      <FaceRecognition />
     </div>
   );
 }
