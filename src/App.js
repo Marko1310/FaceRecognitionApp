@@ -34,12 +34,12 @@ function App() {
       leftColumn: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
       rightColumn: width - clarifaiFace.right_col * width,
-      vottomRow: height - clarifaiFace.bottom_row * height,
+      bottomRow: height - clarifaiFace.bottom_row * height,
     };
   };
 
   const displayFaceBox = function (box) {
-    setBox({ box });
+    setBox(box);
     console.log(box);
   };
 
@@ -114,7 +114,7 @@ function App() {
           onInputChange={onInputChange}
         />
       </div>
-      <FaceRecognition imageURL={imageURL} />
+      <FaceRecognition imageURL={imageURL} box={box} />
     </div>
   );
 }

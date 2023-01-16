@@ -4,7 +4,21 @@
   padding-top: 2rem;
 }
 
+.image-container {
+  position: absolute;
+}
+
 .faceRecognition-image {
   width: 500px;
   height: auto;
+}
+
+.bounding-box {
+  position: absolute;
+  /* border-style: solid; */
+  box-shadow: 0 0 0 3px #149df2 inset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
 }
