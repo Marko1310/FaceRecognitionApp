@@ -17,7 +17,7 @@ function App() {
   const USER_ID = "marko_1310";
   // Your PAT (Personal Access Token) can be found in the portal under Authentification
   const PAT = "2a16d935ac2b43b1b08762124abc2a7a";
-  const APP_ID = "db3dd2933faf4d11ad644235deeb1319";
+  const APP_ID = "my-first-application";
   // Change these to whatever model and image URL you want to use
   const MODEL_ID = "general-image-recognition";
   const MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
