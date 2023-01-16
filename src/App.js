@@ -8,10 +8,14 @@ import Particle from "./components/Particles/Particle";
 import { useState } from "react";
 
 function App() {
+  // state for image adress input
   const [input, setInput] = useState("");
 
+  // state for image
+  const [imageURL, setImageURl] = useState("");
+
   const onInputChange = function (event) {
-    console.log(event.target.value);
+    setInput(event.target.value);
   };
 
   ////////////// FACE DETECTION API //////////////////
@@ -20,11 +24,12 @@ function App() {
   const PAT = "2a16d935ac2b43b1b08762124abc2a7a";
   const APP_ID = "my-first-application";
   // Change these to whatever model and image URL you want to use
-  const MODEL_ID = "general-image-recognition";
-  const MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
-  const IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
+  const MODEL_ID = "face-detection";
+  const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
+  const IMAGE_URL = input;
 
   const onButtonSubmit = function () {
+    setImageURl(input);
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
@@ -63,7 +68,11 @@ function App() {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then(
+        (result) =>
+          console.log(JSON.parse(result)).outputs[0].data.regions[0].region_info
+            .bounding_box
+      )
       .catch((error) => console.log("error", error));
   };
 
@@ -79,7 +88,7 @@ function App() {
           onInputChange={onInputChange}
         />
       </div>
-      <FaceRecognition />
+      <FaceRecognition imageURL={imageURL} />
     </div>
   );
 }

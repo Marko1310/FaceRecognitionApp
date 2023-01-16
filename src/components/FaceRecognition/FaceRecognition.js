@@ -1,9 +1,9 @@
 import "./FaceRecognition.css";
 
-const FaceRecognition = () => {
+const FaceRecognition = ({ imageURL }) => {
   return (
     <div className="faceRecognition-container">
-      <img src="https://samples.clarifai.com/metro-north.jpg" />
+      <img src={imageURL} />
     </div>
   );
 };
