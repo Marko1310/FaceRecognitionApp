@@ -1,14 +1,27 @@
 import React from "react";
 import "./Navigation.css";
 
-const Navigation = ({ onRouteChange }) => {
-  return (
-    <nav className="navigation">
-      <p onClick={() => onRouteChange("signin")} className="signout">
-        Sign Out
-      </p>
-    </nav>
-  );
+const Navigation = ({ onRouteChange, signedin }) => {
+  if (signedin) {
+    return (
+      <nav className="navigation">
+        <p onClick={() => onRouteChange("signin")} className="signout">
+          Sign Out
+        </p>
+      </nav>
+    );
+  } else {
+    return (
+      <nav className="navigation">
+        <p onClick={() => onRouteChange("home")} className="signout">
+          Sign In
+        </p>
+        <p onClick={() => onRouteChange("home")} className="signout">
+          Register
+        </p>
+      </nav>
+    );
+  }
 };
 
 export default Navigation;

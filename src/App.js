@@ -16,11 +16,14 @@ function App() {
   // state for image
   const [imageURL, setImageURl] = useState("");
 
-  // state for a box
+  // state for a face box dimensions
   const [box, setBox] = useState("");
 
-  // state for route
-  const [route, setRoute] = useState("home");
+  // state for routing between pages (home, signin and register)
+  const [route, setRoute] = useState("signout");
+
+  // state for signed in
+  const [signedin, setSignedIn] = useState(false);
 
   const onInputChange = function (event) {
     setInput(event.target.value);
@@ -108,13 +111,18 @@ function App() {
   };
 
   const onRouteChange = (route) => {
+    if (route === "signout") {
+      setSignedIn(false);
+    } else if (route === "home") {
+      setSignedIn(true);
+    }
     setRoute(route);
   };
 
   return (
     <div className="App">
       <Particle />
-      <Navigation onRouteChange={onRouteChange} />
+      <Navigation onRouteChange={onRouteChange} signedin={signedin} />
 
       {route === "home" ? (
         <div>
