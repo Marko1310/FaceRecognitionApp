@@ -33,8 +33,6 @@ function App() {
     const clarifaiFace =
       JSON.parse(data).outputs[0].data.regions[0].region_info.bounding_box;
 
-    console.log(clarifaiFace);
-
     const image = document.getElementById("inputImage");
     const width = image.width;
     const height = image.height;
@@ -48,7 +46,6 @@ function App() {
 
   const displayFaceBox = function (box) {
     setBox(box);
-    console.log(box);
   };
 
   ////////////// FACE DETECTION API //////////////////
@@ -101,12 +98,7 @@ function App() {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) =>
-        // console.log(
-        //   JSON.parse(result).outputs[0].data.regions[0].region_info.bounding_box
-        // )
-        displayFaceBox(calculateFaceLocation(result))
-      )
+      .then((result) => displayFaceBox(calculateFaceLocation(result)))
       .catch((error) => console.log("error", error));
   };
 
