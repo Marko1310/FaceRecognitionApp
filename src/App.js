@@ -4,6 +4,7 @@ import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import Signin from "./components/Signin/Signin";
 import Particle from "./components/Particles/Particle";
 import { useState } from "react";
 
@@ -16,6 +17,9 @@ function App() {
 
   // state for a box
   const [box, setBox] = useState("");
+
+  // state for route
+  const [route, setRoute] = "signin";
 
   const onInputChange = function (event) {
     setInput(event.target.value);
@@ -106,7 +110,9 @@ function App() {
     <div className="App">
       <Particle />
       <Navigation />
+
       <Logo />
+      <Signin />
       <Rank />
       <div className="Logo-center">
         <ImageLinkForm
