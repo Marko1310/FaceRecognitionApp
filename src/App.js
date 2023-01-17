@@ -110,6 +110,7 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
+  // function to change the signin state
   const onRouteChange = (route) => {
     if (route === "signout") {
       setSignedIn(false);

@@ -5,7 +5,7 @@ const Navigation = ({ onRouteChange, signedin }) => {
   if (signedin) {
     return (
       <nav className="navigation">
-        <p onClick={() => onRouteChange("signin")} className="signout">
+        <p onClick={() => onRouteChange("signout")} className="signout">
           Sign Out
         </p>
       </nav>
@@ -13,10 +13,10 @@ const Navigation = ({ onRouteChange, signedin }) => {
   } else {
     return (
       <nav className="navigation">
-        <p onClick={() => onRouteChange("home")} className="signout">
+        <p onClick={() => onRouteChange("signin")} className="signout">
           Sign In
         </p>
-        <p onClick={() => onRouteChange("home")} className="signout">
+        <p onClick={() => onRouteChange("register")} className="signout">
           Register
         </p>
       </nav>
