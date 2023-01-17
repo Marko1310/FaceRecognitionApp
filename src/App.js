@@ -5,6 +5,7 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Signin from "./components/Signin/Signin";
+import Register from "./components/Register/Register";
 import Particle from "./components/Particles/Particle";
 import { useState } from "react";
 
@@ -19,7 +20,7 @@ function App() {
   const [box, setBox] = useState("");
 
   // state for route
-  const [route, setRoute] = "signin";
+  const [route, setRoute] = useState("home");
 
   const onInputChange = function (event) {
     setInput(event.target.value);
@@ -106,21 +107,33 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
+  const onRouteChange = (route) => {
+    setRoute(route);
+  };
+
   return (
     <div className="App">
       <Particle />
-      <Navigation />
+      <Navigation onRouteChange={onRouteChange} />
 
-      <Logo />
-      <Signin />
-      <Rank />
-      <div className="Logo-center">
-        <ImageLinkForm
-          onButtonSubmit={onButtonSubmit}
-          onInputChange={onInputChange}
-        />
-      </div>
-      <FaceRecognition imageURL={imageURL} box={box} />
+      {route === "home" ? (
+        <div>
+          {" "}
+          <Logo />
+          <Rank />
+          <div className="Logo-center">
+            <ImageLinkForm
+              onButtonSubmit={onButtonSubmit}
+              onInputChange={onInputChange}
+            />
+          </div>
+          <FaceRecognition imageURL={imageURL} box={box} />
+        </div>
+      ) : route === "signin" ? (
+        <Signin onRouteChange={onRouteChange} />
+      ) : (
+        <Register onRouteChange={onRouteChange} />
+      )}
     </div>
   );
 }
