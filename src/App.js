@@ -8,6 +8,7 @@ import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import Particle from "./components/Particles/Particle";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   // state for image adress input
