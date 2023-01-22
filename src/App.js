@@ -21,10 +21,19 @@ function App() {
   const [box, setBox] = useState("");
 
   // state for routing between pages (home, signin and register)
-  const [route, setRoute] = useState("signout");
+  const [route, setRoute] = useState("signin");
 
   // state for signed in
   const [signedin, setSignedIn] = useState(false);
+
+  // state for users
+  const [user, setUser] = useState({
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  });
 
   const onInputChange = function (event) {
     setInput(event.target.value);
@@ -59,7 +68,7 @@ function App() {
   const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
   const IMAGE_URL = input;
 
-  const onButtonSubmit = function () {
+  const onPictureSubmit = function () {
     setImageURl(input);
     const raw = JSON.stringify({
       user_app_id: {
@@ -98,7 +107,24 @@ function App() {
         "/outputs",
       requestOptions
     )
-      .then((response) => response.text())
+      .then((response) => {
+        if (response) {
+          fetch("http://localhost:8000/image", {
+            method: "put",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+              id: user.id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((count) => {
+              setUser((prevUser) => {
+                return { ...prevUser, entries: count };
+              });
+            });
+        }
+        return response.text();
+      })
       .then((result) => displayFaceBox(calculateFaceLocation(result)))
       .catch((error) => console.log("error", error));
   };
@@ -113,6 +139,17 @@ function App() {
     setRoute(route);
   };
 
+  // function to load user
+  const loadUser = function (incomingData) {
+    setUser({
+      id: incomingData.id,
+      name: incomingData.name,
+      email: incomingData.email,
+      entries: incomingData.entries,
+      joined: incomingData.joined,
+    });
+  };
+
   return (
     <div className="App">
       <Particle />
@@ -122,19 +159,19 @@ function App() {
         <div>
           {" "}
           <Logo />
-          <Rank />
+          <Rank user={user} />
           <div className="Logo-center">
             <ImageLinkForm
-              onButtonSubmit={onButtonSubmit}
+              onPictureSubmit={onPictureSubmit}
               onInputChange={onInputChange}
             />
           </div>
           <FaceRecognition imageURL={imageURL} box={box} />
         </div>
       ) : route === "signin" ? (
-        <Signin onRouteChange={onRouteChange} />
+        <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
       ) : (
-        <Register onRouteChange={onRouteChange} />
+        <Register onRouteChange={onRouteChange} loadUser={loadUser} />
       )}
     </div>
   );

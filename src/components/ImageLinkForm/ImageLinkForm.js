@@ -1,7 +1,7 @@
 import React from "react";
 import "./ImageLinkForm.css";
 
-const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
+const ImageLinkForm = ({ onInputChange, onPictureSubmit }) => {
   return (
     <div className="imageLinkForm-container">
       <p>{`This magic brain will detect faces inyour image`}</p>
@@ -11,7 +11,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
           className="imageLinkForm-input"
           type="text"
         />
-        <button onClick={onButtonSubmit} className="imageLinkForm-button">
+        <button onClick={onPictureSubmit} className="imageLinkForm-button">
           Detect
         </button>
       </div>

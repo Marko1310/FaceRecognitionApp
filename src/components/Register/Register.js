@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Register({ onRouteChange }) {
+function Register({ onRouteChange, loadUser }) {
   // state for registration
   const [registerForm, setRegisterForm] = useState({
     email: "",
@@ -36,9 +36,10 @@ function Register({ onRouteChange }) {
         name: registerForm.name,
       }),
     })
-      .then((response) => Response.json())
+      .then((response) => response.json())
       .then((user) => {
         if (user) {
+          loadUser(user);
           onRouteChange("home");
         }
       });
