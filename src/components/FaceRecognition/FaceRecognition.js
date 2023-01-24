@@ -8,7 +8,6 @@ const FaceRecognition = ({ imageURL, box }) => {
         <img id="inputImage" className="faceRecognition-image" src={imageURL} />
 
         <div
-          //   className="bounding-box"
           style={{
             position: "absolute",
             /* border-style: solid; */

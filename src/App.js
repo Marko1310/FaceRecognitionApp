@@ -120,7 +120,7 @@ function App() {
             .then((count) => {
               setUser((prevUser) => {
                 return { ...prevUser, entries: count };
-              });
+              }).catch(console.log);
             });
         }
         return response.text();
@@ -133,6 +133,7 @@ function App() {
   const onRouteChange = (route) => {
     if (route === "signout") {
       setSignedIn(false);
+      setImageURl("");
     } else if (route === "home") {
       setSignedIn(true);
     }
