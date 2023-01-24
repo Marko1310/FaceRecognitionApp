@@ -120,7 +120,7 @@ function App() {
             .then((count) => {
               setUser((prevUser) => {
                 return { ...prevUser, entries: count };
-              }).catch(console.log);
+              });
             });
         }
         return response.text();
