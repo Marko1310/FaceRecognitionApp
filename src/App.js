@@ -8,7 +8,6 @@ import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import Particle from "./components/Particles/Particle";
 import { useState } from "react";
-import { useEffect } from "react";
 
 function App() {
   // state for image adress input
@@ -109,7 +108,7 @@ function App() {
     )
       .then((response) => {
         if (response) {
-          fetch("http://localhost:8000/image", {
+          fetch("https://facerecognitionapp-api.onrender.com/image", {
             method: "put",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

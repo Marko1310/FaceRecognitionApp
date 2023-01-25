@@ -27,7 +27,7 @@ function Register({ onRouteChange, loadUser }) {
   };
 
   const onSubmitRegister = function () {
-    fetch("http://localhost:8000/register", {
+    fetch("https://facerecognitionapp-api.onrender.com/register", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
